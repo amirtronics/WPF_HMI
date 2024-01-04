@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1000" Width="1800"
         WindowState="Maximized"
-        WindowStyle="None">
+        WindowStyle="None"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="C:\Dev\PressBrakeHMI-V6-NP\MachineControlPanel\accell_u_pressbrake_scene.png"></ImageBrush>
@@ -20,10 +21,11 @@
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="400" />
                 <RowDefinition />
+                <RowDefinition Height="625" />
+                <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Height="400" Width="50">
                 <Button x:Name="btnHome" Content="Home" Width="100" Height="50" Click="btnHome_Click">
                     <Button.LayoutTransform>
                         <RotateTransform Angle="270"/>
@@ -44,6 +46,27 @@
                         <RotateTransform Angle="270"/>
                     </Button.LayoutTransform>
                 </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="37*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Height="56" Width="496">
+                <TextBlock 
+                    Text="PLC Status:" 
+                    FontSize="30" 
+                    Margin="10"
+                    Foreground="White"/>
+
+                <TextBlock 
+                    Text="Connected" 
+                    FontSize="30" 
+                    Margin="10"
+                    Foreground="Green"/>
             </StackPanel>
         </Grid>
 
@@ -71,6 +94,8 @@
                     HorizontalAlignment="Center"  Click="btnStop_Click"/>
                 <Button x:Name="btnReset" Width="100" Height="40" Content="Reset" Margin="5"
                     HorizontalAlignment="Center"  Click="btnReset_Click"/>
+                <Button x:Name="btnReconnect" Width="100" Height="40" Content="Reconnect" Margin="5"
+                    HorizontalAlignment="Center"  Click="btnReconnect_Click"/>
             </StackPanel>
         </Grid>
 
