@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
+using System.Security.Policy;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HMI.View
 {
@@ -32,11 +21,23 @@ namespace HMI.View
             try
             {
                 // Navigate to the YouTube video URL
+                cameraDisconnectedImage.Visibility = Visibility.Hidden;
+ 
+                WebRequest request = WebRequest.Create(videoUrl);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new Exception();
+                }
+
+                bool result = webView.IsEnabled;
                 webView.Source = new Uri(videoUrl);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading YouTube video: {ex.Message}");
+                cameraDisconnectedImage.Visibility = Visibility.Visible;
+                //MessageBox.Show($"Error loading YouTube video: {ex.Message}");
             }
         }
 
@@ -73,6 +74,11 @@ namespace HMI.View
         private void webView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cameraDisconnectedImage.Visibility = Visibility.Hidden;
         }
     }
 }
