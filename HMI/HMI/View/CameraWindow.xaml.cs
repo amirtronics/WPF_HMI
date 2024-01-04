@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,9 +25,54 @@ namespace HMI.View
             InitializeComponent();
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private void btnRaw_Click(object sender, RoutedEventArgs e)
         {
-            myWebBrowser.Navigate(SearchTermTextBox.Text);
+            string videoUrl = $"http://10.2.2.128:8080/stream?topic=/baumer/image_raw";
+
+            try
+            {
+                // Navigate to the YouTube video URL
+                webView.Source = new Uri(videoUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading YouTube video: {ex.Message}");
+            }
+        }
+
+        private void btnAngle_Click(object sender, RoutedEventArgs e)
+        {
+            string videoUrl = $"http://10.2.2.128:8080/stream?topic=/baumer/image_angle";
+
+            try
+            {
+                // Navigate to the YouTube video URL
+                webView.Source = new Uri(videoUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading YouTube video: {ex.Message}");
+            }
+        }
+
+        private void btnVideo_Click(object sender, RoutedEventArgs e)
+        {
+            string videoUrl = $"http://10.2.2.128:8080/stream?topic=/image";
+
+            try
+            {
+                // Navigate to the YouTube video URL
+                webView.Source = new Uri(videoUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading YouTube video: {ex.Message}");
+            }
+        }
+
+        private void webView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
         }
     }
 }
