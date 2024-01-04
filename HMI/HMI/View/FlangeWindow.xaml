@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HMI.View"
         mc:Ignorable="d"
-        Title="FlangeWindow" Height="450" Width="800" WindowStyle="None" 
+        Title="FlangeWindow" Height="600" Width="1000" WindowStyle="None" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Opacity="0.8">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
+        <TextBlock 
+            x:Name="flangeTitleBox" 
+            Text="Flange Tab"
+            FontSize="24"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
     </Grid>
 </Window>
