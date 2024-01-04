@@ -8,9 +8,30 @@ namespace HMI;
 /// </summary>
 public partial class MainWindow : Window
 {
+    public PLC beckhoffPLC;
+
     public MainWindow()
     {
         InitializeComponent();
+
+        beckhoffPLC = new PLC
+        {
+            adsAddress = "192.168.14.1.1.1",
+            adsPort = 851,
+        };
+    }
+
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            beckhoffPLC.Connect();
+        }
+        catch (Exception ex)
+        {
+            MessageBoxResult result = MessageBox.Show("Do you agree?", "Agreement",
+            MessageBoxButton.YesNo, MessageBoxImage.Question);
+        }
     }
 
     private void btnMinimize_Click(object sender, RoutedEventArgs e)
@@ -62,7 +83,8 @@ public partial class MainWindow : Window
 
     private void btnFlange_Click(object sender, RoutedEventArgs e)
     {
-
+        FlangeWindow flangeWindow = new FlangeWindow();
+        flangeWindow.Show();
     }
 
     private void btnProfile_Click(object sender, RoutedEventArgs e)
@@ -74,5 +96,10 @@ public partial class MainWindow : Window
     {
         CameraWindow cameraWindow = new CameraWindow();
         cameraWindow.Show();
+    }
+
+    private void btnReconnect_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }
