@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HMI.View"
         mc:Ignorable="d"
-        Title="CameraWindow" Height="450" Width="800" WindowStyle="None" 
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="CameraWindow" Height="600" Width="1000" WindowStyle="None" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Opacity="0.8">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,14 +14,14 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBox  
+        <!--<TextBox  
             Width="250"  
             VerticalAlignment="Center" 
             HorizontalAlignment="Center" 
             x:Name="SearchTermTextBox" 
-            Margin="5"/>
+            Margin="5"/>-->
 
-        <TextBlock x:Name="searchTextBlock" IsHitTestVisible="False" Text="Enter URL here" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground="DarkGray">
+        <!--<TextBlock x:Name="searchTextBlock" IsHitTestVisible="False" Text="Enter URL here" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground="DarkGray">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -31,30 +32,59 @@
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>
-        </TextBlock>
+        </TextBlock>-->
+
+        <TextBlock 
+            x:Name="cameraTitleBox" 
+            Text="Camera Inspection"
+            FontSize="24"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="7.5*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <WebBrowser 
+            <!--<WebBrowser 
             x:Name="myWebBrowser"
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Margin="10,10,10,10"
             Height="300"
-            Width="600"/>
+            Width="600"/>-->
+            <wv2:WebView2 
+                Name="webView"
+                Width="640"
+                Height="360"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="180,0,0,0"/>
+
 
             <StackPanel Grid.Column="1">
                 <Button 
-                    x:Name="btnSearch"
+                    x:Name="btnRaw"
                     Grid.Column="1"  
                     Height="40"
                     Width="80"
-                    Content="Search"
-                    Click="btnSearch_Click"/>
+                    Content="Raw"
+                    Click="btnRaw_Click"/>
+                <Button 
+                    x:Name="btnAngle"
+                    Grid.Column="1"  
+                    Height="40"
+                    Width="80"
+                    Content="Angle"
+                    Click="btnAngle_Click"/>
+                <Button 
+                    x:Name="btnVideo"
+                    Grid.Column="1"  
+                    Height="40"
+                    Width="80"
+                    Content="Video"
+                    Click="btnVideo_Click"/>
             </StackPanel>
         </Grid>
 
