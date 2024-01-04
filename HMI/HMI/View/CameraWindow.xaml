@@ -7,32 +7,13 @@
         mc:Ignorable="d"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         Title="CameraWindow" Height="600" Width="1000" WindowStyle="None" 
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Opacity="0.8">
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Opacity="0.8"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-
-        <!--<TextBox  
-            Width="250"  
-            VerticalAlignment="Center" 
-            HorizontalAlignment="Center" 
-            x:Name="SearchTermTextBox" 
-            Margin="5"/>-->
-
-        <!--<TextBlock x:Name="searchTextBlock" IsHitTestVisible="False" Text="Enter URL here" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground="DarkGray">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>-->
 
         <TextBlock 
             x:Name="cameraTitleBox" 
@@ -46,21 +27,32 @@
                 <ColumnDefinition Width="7.5*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <!--<WebBrowser 
-            x:Name="myWebBrowser"
-            Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Margin="10,10,10,10"
-            Height="300"
-            Width="600"/>-->
+
             <wv2:WebView2 
                 Name="webView"
-                Width="640"
-                Height="360"
+                Width="444"
+                Height="332"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="180,0,0,0"/>
+                Margin="278,0,0,0"/>
+
+            <Image Name="cameraDisconnectedImage" 
+                   Margin="278,32,0,32" 
+                   RenderTransformOrigin="0.5,0.5" 
+                   HorizontalAlignment="Left" 
+                   Width="444">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="200"  
+                    UriSource="C:\Work\Codes\HMI\VS\WPF_HMI\HMI\HMI\CameraDisconnected.jpg" />
+                </Image.Source>
+            </Image>
 
 
             <StackPanel Grid.Column="1">
