@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\attemptDll\attemptDll.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="TwinCAT.Ads">
       <HintPath>..\..\..\..\..\..\..\TwinCAT\AdsApi\.NET\v4.0.30319\TwinCAT.Ads.dll</HintPath>
     </Reference>
