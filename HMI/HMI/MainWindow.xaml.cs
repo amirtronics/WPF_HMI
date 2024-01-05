@@ -14,6 +14,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        Attempt attempt = new Attempt();
+        int a = attempt.AttemptFunc();
+
         beckhoffPLC = new PLC
         {
             adsAddress = "192.168.14.1.1.1",
@@ -23,6 +26,8 @@ public partial class MainWindow : Window
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        
+
         try
         {
             beckhoffPLC.Connect();
